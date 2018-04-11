@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Last update 2018/04/10 by pavroo
+
+DEVCHROOT=$(mount | grep proc | grep calamares | awk '{print $3}' | sed -e "s#/proc##g")
+
+# set 755 chmod to / (root dir)
+
+chmod 755 $DEVCHROOT
+
+# uninstall lvm2 if not installed on ecrypted disk of sparky 4
+CATMAPPER=`cat $DEVCHROOT/etc/fstab | grep mapper`
+
+if [ "$CATMAPPER" = "" ]; then
+
+cat > $DEVCHROOT/tmp/remove-lvm << FOO
+#!/bin/bash
+apt-get purge --yes --force-yes lvm2
+FOO
+	chmod +x $DEVCHROOT/tmp/remove-lvm
+	chroot $DEVCHROOT /tmp/remove-lvm
+	rm -f $DEVCHROOT/tmp/remove-lvm
+fi
