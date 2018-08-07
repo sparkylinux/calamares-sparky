@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Replaced apt installation with dpkg (offline) by pavroo
-# Last update 2017/03/02
+# Last update 2018/08/05
 
 DEVCHROOT=$(mount | grep proc | grep calamares | awk '{print $3}' | sed -e "s#/proc##g")
 
@@ -14,7 +14,12 @@ if [ -d /sys/firmware/efi/efivars ]; then
     # chroot $DEVCHROOT apt-get --allow-unauthenticated -y install grub-efi
     mkdir -p $DEVCHROOT/boot/efi/EFI/sparky
     mkdir -p $DEVCHROOT/debs
-    cp /lib/live/mount/medium/offline/* $DEVCHROOT/debs/
+    if [ -f /lib/live/mount/medium/offline/*.deb ]; then
+    	cp /lib/live/mount/medium/offline/* $DEVCHROOT/debs/
+    else
+    	cp /run/live/medium/offline/* $DEVCHROOT/debs/
+    fi
+    #cp /lib/live/mount/medium/offline/* $DEVCHROOT/debs/
     #chroot $DEVCHROOT dpkg -i /debs/*.deb
 
 cat > $DEVCHROOT/tmp/efi-install << FOO
