@@ -1,9 +1,20 @@
 #!/bin/bash
 
-# Last update 2018/04/10 by pavroo
+# Last update 2018/09/14 by pavroo
 
 DEVCHROOT=$(mount | grep proc | grep calamares | awk '{print $3}' | sed -e "s#/proc##g")
 
 # set 755 chmod to / (root dir)
 
 chmod 755 $DEVCHROOT
+
+cat > $DEVCHROOT/tmp/crypt-remove << FOO
+#!/bin/bash
+if [ ! -f /crypto* ]; then
+	apt-get purge ^cryptsetup* --yes
+fi
+FOO
+
+chmod +x $DEVCHROOT/tmp/crypt-remove
+chroot $DEVCHROOT /tmp/crypt-remove
+rm -f $DEVCHROOT/tmp/crypt-remove
