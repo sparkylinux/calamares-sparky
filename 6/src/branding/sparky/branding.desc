@@ -1,0 +1,29 @@
+---
+componentName:  sparky
+
+strings:
+    productName:         SparkyLinux
+    shortProductName:    Sparky
+    version:             6
+    shortVersion:        6
+    versionedName:       SparkyLinux 6 "Po Tolo"
+    shortVersionedName:  Sparky 6
+    bootloaderEntryName: Sparky
+    productUrl:          https://sparkylinux.org/
+    supportUrl:          https://sparkylinux.org/forum/
+    knownIssuesUrl:      https://sparkylinux.org/
+    releaseNotesUrl:     https://sparkylinux.org/
+    showDonateUrl:       https://sparkylinux.org/donate/
+
+images:
+    productLogo:         "sparky.png"
+    productIcon:         "sparky.png"
+    productWelcome:      "languages.png"
+
+slideshow:               "show.qml"
+
+style:
+   sidebarBackground:    "#292F34"
+   sidebarText:          "#FFFFFF"
+   sidebarTextSelect:    "#292F34"
+   sidebarTextHighlight: "#005094"

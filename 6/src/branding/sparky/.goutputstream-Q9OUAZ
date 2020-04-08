@@ -1,0 +1,28 @@
+---
+componentName:  sparky
+
+strings:
+    productName:         SparkyLinux
+    shortProductName:    Sparky
+    version:             5
+    shortVersion:        5
+    versionedName:       SparkyLinux 5 "Nibiru"
+    shortVersionedName:  Sparky 5
+    bootloaderEntryName: Sparky
+    productUrl:          http://sparkylinux.org/
+    supportUrl:          http://sparkylinux.org/forum/
+    knownIssuesUrl:      http://sparkylinux.org/
+    releaseNotesUrl:     http://sparkylinux.org/
+
+images:
+    productLogo:         "sparky.png"
+    productIcon:         "sparky.png"
+    productWelcome:      "languages.png"
+
+slideshow:               "show.qml"
+
+style:
+   sidebarBackground:    "#292F34"
+   sidebarText:          "#FFFFFF"
+   sidebarTextSelect:    "#292F34"
+   sidebarTextHighlight: "#005094"
