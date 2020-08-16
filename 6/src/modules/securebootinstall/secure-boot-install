@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Last update 2020/04/18 by pavroo
+# Last update 2020/08/15 by pavroo
 
 DEVCHROOT=$(mount | grep proc | grep calamares | awk '{print $3}' | sed -e "s#/proc##g")
 
@@ -23,6 +23,8 @@ cat > $DEVCHROOT/tmp/signed-install << FOO
 #!/bin/bash
 cd debs
 dpkg -i *.deb
+dpkg --configure -a
+apt install -f -y
 cd ..
 FOO
 		chmod +x $DEVCHROOT/tmp/signed-install
