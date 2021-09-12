@@ -1,0 +1,29 @@
+---
+componentName:  sparky
+
+strings:
+    productName:         SparkyLinux
+    shortProductName:    Sparky
+    version:             7
+    shortVersion:        7
+    versionedName:       SparkyLinux 7 "Orion Belt"
+    shortVersionedName:  Sparky 7
+    bootloaderEntryName: Sparky
+    productUrl:          https://sparkylinux.org/
+    supportUrl:          https://sparkylinux.org/forum/
+    knownIssuesUrl:      https://sparkylinux.org/
+    releaseNotesUrl:     https://sparkylinux.org/
+    showDonateUrl:       https://sparkylinux.org/donate/
+
+images:
+    productLogo:         "sparky.png"
+    productIcon:         "sparky.png"
+    productWelcome:      "languages.png"
+
+slideshow:               "show.qml"
+
+style:
+   sidebarBackground:    "#292F34"
+   sidebarText:          "#FFFFFF"
+   sidebarTextSelect:    "#292F34"
+   sidebarTextHighlight: "#005094"

@@ -1,0 +1,6 @@
+---
+type:       "job"
+name:       "securebootfix"
+interface:  "process"
+command:    "./secure-boot-fix"
+timeout:    600
