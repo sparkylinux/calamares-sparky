@@ -1,0 +1,6 @@
+---
+type:       "job"
+name:       "sparkyhooks"
+interface:  "process"
+command:    "./sparkyhooks"
+timeout:    600

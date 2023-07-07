@@ -1,0 +1,6 @@
+---
+type:       "job"
+name:       "securebootinstall"
+interface:  "process"
+command:    "./secure-boot-install"
+timeout:    600

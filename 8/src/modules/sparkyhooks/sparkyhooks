@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Last update 2020/04/09 by pavroo
+
+DEVCHROOT=$(mount | grep proc | grep calamares | awk '{print $3}' | sed -e "s#/proc##g")
+
+# set 755 chmod to / (root dir)
+chmod 755 $DEVCHROOT
+
+CHECKGRUB=`cat $DEVCHROOT/etc/default/grub | grep "GRUB_ENABLE_CRYPTODISK"`
+if [ "$CHECKGRUB" = " " ] && [ -f "$DEVCHROOT/crypto*" ]; then
+	echo "GRUB_ENABLE_CRYPTODISK=y" >> $DEVCHROOT/etc/default/grub
+fi
+
+# copy skel to home
+TARGETUSER=`cat $DEVCHROOT/etc/passwd | grep 1000 | awk -F ":" '{print $1}'`
+cd /etc/skel
+if [ ! -d $DEVCHROOT/home/$TARGETUSER ]; then
+	mkdir -p $DEVCHROOT/home/$TARGETUSER
+fi
+rsync -ar . $DEVCHROOT/home/$TARGETUSER
+
+cat > $DEVCHROOT/tmp/sparkyfix << FOO
+#!/bin/bash
+chown -R $TARGETUSER:$TARGETUSER /home/$TARGETUSER
+if [ ! -f /crypto* ]; then
+	apt-get purge cryptsetup* --yes
+fi
+FOO
+
+chmod +x $DEVCHROOT/tmp/sparkyfix
+chroot $DEVCHROOT /tmp/sparkyfix
+rm -f $DEVCHROOT/tmp/sparkyfix
