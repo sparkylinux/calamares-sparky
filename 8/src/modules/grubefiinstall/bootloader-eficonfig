@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Replaced apt installation with dpkg (offline) by pavroo
-# Last update 2020/04/09
+# Last update 2024/05/12
 
 DEVCHROOT=$(mount | grep proc | grep calamares | awk '{print $3}' | sed -e "s#/proc##g")
 
@@ -24,9 +24,11 @@ if [ -d /sys/firmware/efi/efivars ]; then
 
 cat > $DEVCHROOT/tmp/efi-install << FOO
 #!/bin/bash
-cd debs
-dpkg -i *.deb
-cd ..
+#cd debs
+dpkg -i /debs/*.deb
+dpkg --configure -a
+apt install -f -y
+#cd ..
 FOO
 
     chmod +x $DEVCHROOT/tmp/efi-install

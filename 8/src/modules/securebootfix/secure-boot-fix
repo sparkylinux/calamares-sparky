@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Last update 2020/04/10 by pavroo
+# Last update 2024/05/12 by pavroo
 
 DEVCHROOT=$(mount | grep proc | grep calamares | awk '{print $3}' | sed -e "s#/proc##g")
 

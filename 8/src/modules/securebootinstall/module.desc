@@ -2,5 +2,5 @@
 type:       "job"
 name:       "securebootinstall"
 interface:  "process"
-command:    "./secure-boot-install"
+command:    "/usr/lib/x86_64-linux-gnu/calamares/modules/securebootinstall/secure-boot-install"
 timeout:    600

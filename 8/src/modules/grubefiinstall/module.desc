@@ -2,5 +2,5 @@
 type:       "job"
 name:       "grubefiinstall"
 interface:  "process"
-command:    "./bootloader-eficonfig"
+command:    "/usr/lib/x86_64-linux-gnu/calamares/modules/grubefiinstall/bootloader-eficonfig"
 timeout:    600
