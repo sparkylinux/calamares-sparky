@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Last update 2020/04/09 by pavroo
+# Last update 2024/07/03 by pavroo
 
 DEVCHROOT=$(mount | grep proc | grep calamares | awk '{print $3}' | sed -e "s#/proc##g")
 
@@ -24,7 +24,7 @@ cat > $DEVCHROOT/tmp/sparkyfix << FOO
 #!/bin/bash
 chown -R $TARGETUSER:$TARGETUSER /home/$TARGETUSER
 if [ ! -f /crypto* ]; then
-	apt-get purge cryptsetup* --yes
+	apt-get purge lvm2 cryptsetup* --yes
 fi
 FOO
 
