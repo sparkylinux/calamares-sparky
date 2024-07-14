@@ -24,7 +24,9 @@ cat > $DEVCHROOT/tmp/sparkyfix << FOO
 #!/bin/bash
 chown -R $TARGETUSER:$TARGETUSER /home/$TARGETUSER
 if [ ! -f /crypto* ]; then
-	apt-get purge lvm2 cryptsetup* --yes
+	apt-get purge lvm2 --yes
+	apt-get purge systemd-cryptsetup --yes
+	apt-get purge cryptsetup* --yes
 fi
 FOO
 
