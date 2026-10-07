@@ -23,7 +23,7 @@ cd /etc/skel
 if [ ! -d $DEVCHROOT/home/$TARGETUSER ]; then
 	mkdir -p $DEVCHROOT/home/$TARGETUSER
 fi
-rsync -ar . $DEVCHROOT/home/$TARGETUSER
+rsync -ar --ignore-existing . $DEVCHROOT/home/$TARGETUSER
 
 #CHECKMAPPER=`cat $DEVCHROOT/etc/fstab | grep mapper`
 #if [ "$CHECKMAPPER" = " " ]; then
